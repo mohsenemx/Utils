@@ -1,0 +1,30 @@
+html,
+body {
+  margin: 0;
+  overflow: hidden;
+}
+.titlebox {
+  height: 30%;
+  width: 100%;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+}
+#title {
+  font-size: 40px;
+}
+.mainbox {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+}
+.outbox {
+  width: 25%;
+  height: 25%;
+  border: 5px solid;
+  border-radius: 30px;
+}
