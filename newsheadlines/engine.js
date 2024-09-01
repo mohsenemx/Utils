@@ -6,19 +6,19 @@ const templates = [
   "[item] has killed [bignumber] people in [location]",
   "[nation] conquered [nation] because their [item] wasn't enough",
   "Every year, [smallnumber] people die to [item] in [location]",
-  "[name] earned a total of [hugenumber] dollars in [location] with a [item]"
+  "[name] earned a total of [hugenumber] dollars in [location] with a [item]",
+  "[group] has cuased a lot of chaos in [location] they are known to use [item] , [item] and [item]",
+  "Riots in [location] caused by [group] activites, cuased the city to collapse into chaos with people running around with a [item]",
 ];
 const names = [
-  "John McKart",
-  "Kelly Johnson",
+  "John McKarti",
   "Cave Johnson",
   "Aria Mason",
   "Juan Dickson",
-  "Sniffby Pukeshine",
-  "Jameenie Snotworthy",
-  "Delilah Noodlepop",
-  "Parsa Oghabi",
-
+  "Barrack Obama",
+  "Dr. Breen",
+  "Ali Khamenei",
+  "William Shakersphere"
 ];
 const locations = ["Sari", "Shittown", "Tehran", "TownCity", "CityCity", "Trashtown", "Neka", "Shanghai", "St. Petersburg"];
 const nations = [
@@ -44,7 +44,7 @@ const items = [
   "Candy",
   "Vaseline"
 ];
-const groups = ["Black Street Gangsters", "American Gays"];
+const groups = ["Black Street Gangsters", "American Gays", "Black Mesa Scintists", "The Combine Elite"];
 function randomTemplate() {
   return templates[getRandomNumber(0, templates.length - 1)];
 }
