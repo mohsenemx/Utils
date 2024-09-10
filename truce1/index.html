@@ -7,12 +7,9 @@
     <meta name="author" content="MohsenEMX" />
     <meta
       name="description"
-      content="Generate random news headlines with this amazing totally not time wasting tool!"
+      content="Totally Random and Useless Cipher Encryption (TRUCE-1)"
     />
-    <meta property="og:image" content="./icon.png" />
-
-    <link rel="shortcut icon" href="./icon.png" type="image/x-icon" />
-    <meta property="og:title" content="Random News Headline Generator" />
+    <meta property="og:title" content="TRUCE-1 Encryption and Decryption" />
     <title>TRUCE-1 Encryption and Decryption</title>
   </head>
   <body>
@@ -24,10 +21,16 @@
         <p>Write the text that you want to encode with TRUCE-1</p>
         <textarea id="inputencrypt"></textarea>
         <button id="encryptButton">Encrypt</button>
-        <p id="encryptedOut"></p>
+        <textarea id="encryptOut" readonly></textarea>
         <p id="keyout"></p>
       </div>
-      <div class="decryption"></div>
+      <div class="decryption">
+        <p>Write the text that you want decode from TRUCE-1</p>
+        <textarea id="inputdecrypt"></textarea>
+        <p>Write the decryption key</p>
+        <input type="text" id="decryptkey">
+        <button id="decryptButton">Decrypt</button>
+        <textarea id="decryptOut" readonly></textarea>
     </div>
     <div class="footer">
       A cool and completely useful app by
