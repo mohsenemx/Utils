@@ -9,17 +9,33 @@ decryptBtn.addEventListener("click", () => {
   let key = document.getElementById("decryptkey").value;
   decrypt(input, key);
 });
+document.getElementById("inputencrypt").addEventListener("input", () => {
+  let a = document.getElementById("inputencrypt").value;
+  document.getElementById("inputencrypt").value = a.replace(
+    /[^\x00-\x7F]/g,
+    ""
+  );
+});
+document.getElementById("inputdecrypt").addEventListener("input", () => {
+  let a = document.getElementById("inputdecrypt").value;
+  document.getElementById("inputdecrypt").value = a.replace(
+    /[^\x00-\x7F]/g,
+    ""
+  );
+});
+document.getElementById("decryptkey").addEventListener("input", () => {
+  let a = document.getElementById("decryptkey").value;
+  document.getElementById("decryptkey").value = a.replace(/[^\x00-\x7F]/g, "");
+});
 function encrypt(text) {
   let key = generateKey();
   let keyChar = key.split("");
   let chars = text.split("");
   let encryptedText = "";
-  console.log(keyChar);
   chars.forEach((element) => {
     //encryptedText += shiftCharacter(element, keyChar[0]);
-    let ch = shiftCharacter(element, 1 * keyChar[0])
+    let ch = shiftCharacter(element, 1 * keyChar[0]);
     encryptedText += ch;
-    console.log(ch);
   });
   chars = encryptedText.split("");
 
@@ -30,7 +46,7 @@ function encrypt(text) {
   });
   chars = encryptedText.split("");
   encryptedText = "";
-  
+
   chars.forEach((element) => {
     encryptedText += shiftCharacter(element, -1 * keyChar[2].charCodeAt(0));
   });
@@ -53,6 +69,10 @@ function generateKey() {
   key += getRandomSmallLetter();
   key += random(100, 999);
   key += !random(0, 1) ? "Z" : "X";
+  key += getRandomSmallLetter();
+  key += getRandomCapitalLetter();
+  key += random(100, 999);
+  console.log('Unencrypted Key: ' + key);
   return key;
 }
 function random(min, max) {
@@ -67,11 +87,11 @@ function getRandomCapitalLetter() {
 function textToHex(text) {
   return text
     .split("")
-    .map((char) => char.charCodeAt(0).toString(20))
+    .map((char) => char.charCodeAt(0).toString(16))
     .join("");
 }
 function shiftCharacter(char, num) {
-  const minAscii = 48;
+  const minAscii = 32;
   const maxAscii = 126;
   let shiftedAscii = char.charCodeAt(0) + num;
 
@@ -91,7 +111,7 @@ function hexToText(hex) {
   return hex
     .match(/.{1,2}/g)
     .reduce(
-      (str, hexPair) => str + String.fromCharCode(parseInt(hexPair, 20)),
+      (str, hexPair) => str + String.fromCharCode(parseInt(hexPair, 16)),
       ""
     );
 }
@@ -119,9 +139,7 @@ function decrypt(text, key) {
   chars = decryptedText.split("");
   decryptedText = "";
   chars.forEach((element) => {
-    
     let ch = shiftCharacter(element, -1 * keyChar[0]);
-    console.log(element, ch);
     decryptedText += ch;
   });
   document.getElementById("decryptOut").value = decryptedText;
