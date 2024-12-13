@@ -16,8 +16,6 @@ Text and Key Constraints:
 - Empty inputs are rejected.
 This step guarantees consistency and prevents unexpected behavior due to invalid characters.
 
----
-
 ### 2. Key Expansion
 TRUCE-2 expands the provided key to ensure a strong, dynamic relationship between the key and the encrypted data.
 
@@ -30,7 +28,7 @@ Each character is replaced with a corresponding value from the S-Box.
 The S-Box is a predefined mapping of ASCII characters to new ASCII values. For example:
 Input A (ASCII 65) may be replaced with another printable character like $ (ASCII 36).
 Substitution ensures non-linearity and adds confusion to the encryption process.
----
+
 ### 4. Shifting (Dynamic Modulo Arithmetic)
 After substitution, the algorithm applies dynamic shifting to each character based on the key and the current round number:
 
@@ -41,7 +39,7 @@ shiftAmount = (ASCII value of key character + round number) % 95
 The character is shifted forward or backward within the printable ASCII range (32–126).
 Wrapping Logic: If a shift moves the character out of the ASCII range, it wraps back within the valid range.
 This step introduces additional confusion and ensures that each round produces unique ciphertext.
----
+
 ### 5. Permutation
 The permuted text is reordered using a permutation function:
 
@@ -49,7 +47,7 @@ Characters in the ciphertext are rearranged according to a specific rule. For ex
 A simple rule might reverse the text: Hello → olleH.
 The permutation ensures that adjacent characters in plaintext are scattered in the ciphertext.
 Permutation increases diffusion, making it harder to identify patterns in the encrypted output.
----
+
 ### 6. Multiple Rounds
 To enhance security, TRUCE-2 performs multiple rounds of the above steps:
 
@@ -65,7 +63,7 @@ Reverse Shifting: Applies inverse dynamic shifting to each character.
 Reverse Substitution: Uses the inverse S-Box to map characters back to their original values.
 The process is repeated for the same number of rounds in reverse order.
 Without the correct key, reversing the encryption steps is computationally infeasible.
----
+
 ### Key Features
 - Sanitization:
 
@@ -86,7 +84,7 @@ Multi-round encryption ensures ciphertext becomes highly non-linear.
 - Reversible Decryption:
 
 Decryption uses the same steps in reverse, making it efficient while maintaining security.
----
+
 ## Security Advantages
 Resilience to Attacks:
 Non-linearity and diffusion ensure resistance to frequency analysis.
@@ -122,6 +120,6 @@ Using the same key and reverse steps, the ciphertext is decrypted back into the 
 Limited to printable ASCII characters (32–126).
 Relies on the secrecy and strength of the user-provided key.
 Not suitable for encrypting binary or non-ASCII data without modification.
----
+
 ### Conclusion
 TRUCE-2 is a robust custom encryption algorithm that combines simplicity with effectiveness. Its modular design allows for extensibility, making it an excellent tool for securing text data.
