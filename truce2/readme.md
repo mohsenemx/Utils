@@ -1,10 +1,13 @@
 # TRUCE-2 Encryption Algorithm
+
 TRUCE-2 is a custom encryption algorithm designed for secure data encoding. It builds on the foundation of its predecessor, TRUCE-1, and incorporates advanced features for enhanced security. Below is a detailed explanation of its working principles, key features, and components.
 ---
 ## How It Works
+
 TRUCE-2 operates in multiple stages, combining several cryptographic techniques to transform plaintext into ciphertext. It ensures that encrypted data is secure, non-reversible without the proper key, and resistant to common attacks. The algorithm consists of the following steps:
 ---
 ### 1. Input Sanitization
+
 Before any encryption or decryption takes place, TRUCE-2 ensures that both the plaintext and the key are sanitized:
 
 Text and Key Constraints:
