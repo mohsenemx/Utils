@@ -86,14 +86,14 @@ Multi-round encryption ensures ciphertext becomes highly non-linear.
 Decryption uses the same steps in reverse, making it efficient while maintaining security.
 
 ## Security Advantages
-Resilience to Attacks:
+### Resilience to Attacks:
 Non-linearity and diffusion ensure resistance to frequency analysis.
 Multi-round encryption makes brute-force attacks computationally impractical.
-Key Sensitivity:
+### Key Sensitivity:
 Small changes in the key produce vastly different ciphertext.
-Lightweight:
+### Lightweight:
 Operates efficiently on plaintext within the printable ASCII range.
-Example
+## Example
 Encryption
 Input:
 
@@ -101,7 +101,7 @@ Input:
 Plaintext: HelloWorld!
 Key: mysecret
 ```
-Steps:
+### Steps:
 
 Sanitization: Text and key are validated.
 Substitution: H → S, e → t, etc.
@@ -113,13 +113,13 @@ Output:
 ```
 Ciphertext: @v8l!3kV)
 ```
-Decryption
+### Decryption
 Using the same key and reverse steps, the ciphertext is decrypted back into the original plaintext.
 
-### Limitations
+## Limitations
 Limited to printable ASCII characters (32–126).
 Relies on the secrecy and strength of the user-provided key.
 Not suitable for encrypting binary or non-ASCII data without modification.
 
-### Conclusion
+## Conclusion
 TRUCE-2 is a robust custom encryption algorithm that combines simplicity with effectiveness. Its modular design allows for extensibility, making it an excellent tool for securing text data.
