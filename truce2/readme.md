@@ -15,7 +15,9 @@ Text and Key Constraints:
 - Non-printable or invalid characters are removed.
 - Empty inputs are rejected.
 This step guarantees consistency and prevents unexpected behavior due to invalid characters.
+
 ---
+
 ### 2. Key Expansion
 TRUCE-2 expands the provided key to ensure a strong, dynamic relationship between the key and the encrypted data.
 
