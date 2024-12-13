@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <meta name="author" content="MohsenEMX" />
+    <meta
+      name="description"
+      content="Totally Random and Useless Cipher Encryption (TRUCE-2)"
+    />
+    <meta property="og:title" content="TRUCE-2 Encryption and Decryption" />
+    <title>TRUCE-2 Encryption and Decryption</title>
+  </head>
+  <body>
+    <!-- Title Section -->
+    <div class="titlebox">
+      <p id="title" class="title">TRUCE 2</p>
+    </div>
+
+    <div class="main">
+      <!-- Encryption Section -->
+      <div class="section encryption">
+        <p class="section-title">Encryption</p>
+        <textarea
+          id="inputencrypt"
+          class="input-text"
+          placeholder="Enter text to encrypt"
+        ></textarea>
+        <input
+          type="text"
+          id="userKeyInput"
+          class="input-key"
+          placeholder="Enter your custom key"
+        />
+        <button class="button" onclick="startEncryption()">Encrypt</button>
+        <textarea
+          id="encryptOut"
+          class="output-text"
+          readonly
+          placeholder="Encrypted text will appear here"
+        ></textarea>
+        <button class="copy-button" onclick="copyToClipboard('encryptOut')">
+          Copy Encrypted Text
+        </button>
+        <p class="key-output"></p>
+      </div>
+
+      <!-- Decryption Section -->
+      <div class="section decryption">
+        <p class="section-title">Decryption</p>
+        <textarea
+          id="inputdecrypt"
+          class="input-text"
+          placeholder="Enter encrypted text"
+        ></textarea>
+        <input
+          type="text"
+          id="decryptkey"
+          class="input-key"
+          placeholder="Enter decryption key"
+        />
+        <button class="button" onclick="startDecryption()">Decrypt</button>
+        <textarea
+          id="decryptOut"
+          class="output-text"
+          readonly
+          placeholder="Decrypted text will appear here"
+        ></textarea>
+        <button class="copy-button" onclick="copyToClipboard('decryptOut')">
+          Copy Decrypted Text
+        </button>
+      </div>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer">
+      <p class="footer-note danger">
+        <a href="./readme.html">Please read this before using the algorithm</a>
+      </p>
+      <p>
+        A cool and completely useful app by
+        <a href="https://github.com/MohsenEMX">MohsenEMX</a>
+      </p>
+    </div>
+
+    <script src="./engine.js"></script>
+    <script>
+      // Encrypt the text using the provided key
+      function startEncryption() {
+        const text = document.getElementById("inputencrypt").value.trim();
+        const userKey = document.getElementById("userKeyInput").value.trim();
+
+        if (!text) {
+          alert("Please enter text to encrypt.");
+          return;
+        }
+
+        // Pass the user-provided key or generate one if blank
+        const encryptedText = encrypt(text, userKey || "defaultKey");
+        document.getElementById("encryptOut").value = encryptedText;
+      }
+
+      // Decrypt the text using the provided key
+      function startDecryption() {
+        const encryptedText = document
+          .getElementById("inputdecrypt")
+          .value.trim();
+        const decryptionKey = document
+          .getElementById("decryptkey")
+          .value.trim();
+
+        if (!encryptedText) {
+          alert("Please enter the encrypted text.");
+          return;
+        }
+
+        if (!decryptionKey) {
+          alert("Please enter the decryption key.");
+          return;
+        }
+
+        // Perform decryption with the provided key
+        const decryptedText = decrypt(encryptedText, decryptionKey);
+        document.getElementById("decryptOut").value = decryptedText;
+      }
+      function copyToClipboard(id) {
+        const textToCopy = document.getElementById(id);
+        textToCopy.select();
+        document.execCommand("copy");
+        alert("Copied to clipboard!");
+      }
+    </script>
+  </body>
+</html>
