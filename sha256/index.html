@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="MohsenEMX" />
+    <meta
+      name="description"
+      content="Run a SHA256 hashrate test in your browser, using CPU or GPU"
+    />
+    <meta property="og:title" content="Online SHA256 Benchmark" />
+    <title>SHA256 Benchmark</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SHA256 Benchmark</h1>
+        </header>
+
+        <section class="toggle-container">
+            <label for="cpu-toggle" class="switch">
+                <input type="checkbox" id="cpu-toggle">
+                <span class="slider"></span>
+            </label>
+            <span class="mode-label" id="mode-label">CPU Mode</span>
+        </section>
+
+        <section class="controls">
+            <label for="duration-slider">Duration:</label>
+            <input type="range" id="duration-slider" min="100" max="10000" value="5000">
+            <span id="duration-value">5000</span> ms
+        </section>
+
+        <button id="start-btn" class="start-btn">Start Test</button>
+
+        <section class="results">
+            <div><strong>Hashes:</strong> <span id="hashes">0</span></div>
+            <div><strong>Time:</strong> <span id="time">0</span> ms</div>
+            <div><strong>Hash rate:</strong> <span id="rate">0</span> hashes/sec</div>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gpu.js@2.0.0/dist/gpu-browser.min.js"></script>
+    <script src="cpu.js"></script>
+    <script src="gpu.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
